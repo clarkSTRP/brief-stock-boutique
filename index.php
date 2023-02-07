@@ -7,14 +7,11 @@
     <title>Document</title>
 </head>
 <body>
-
-    bonjour je suis content
+    <?php
+    include 'SQL.php';
+    include 'table.php';
+    $rows = getAllUsers();
+    afficherTableau($rows, getHeaderTable());
+    ?>
 </body>
 </html>
-<?php 
-$mysqlConnection = new PDO(
-    'mysql:host=localhost;dbname=VapFactory;charset=utf8',
-    'admin',
-    'adminpwd'
-);
-?>
