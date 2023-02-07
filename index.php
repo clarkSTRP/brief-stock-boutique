@@ -7,10 +7,10 @@
     <title>Document</title>
 </head>
 <body>
+
     bonjour je suis content
 </body>
 </html>
-
 <?php 
 try{
 $mysqlConnection = new PDO(
