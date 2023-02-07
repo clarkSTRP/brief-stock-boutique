@@ -7,10 +7,10 @@
     <title>Document</title>
 </head>
 <body>
+
     bonjour je suis content
 </body>
 </html>
-
 <?php 
 $mysqlConnection = new PDO(
     'mysql:host=localhost;dbname=VapFactory;charset=utf8',
