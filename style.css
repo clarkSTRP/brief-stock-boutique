@@ -20,10 +20,19 @@ body {
   background: url("images/dragon-scales.svg") center;
 }
 body header {
-  width: 100%;
+  width: 90%;
 }
 body header h1 {
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   font-size: 2rem;
   text-align: center;
+}
+body form input, body form textarea, body form .ajouter {
+  margin: 3px auto;
+}
+body form textarea {
+  width: 98.5%;
+}
+body form .ajouter {
+  width: 49%;
 }/*# sourceMappingURL=style.css.map */

@@ -32,6 +32,23 @@
         <header>
             <h1>VAP FACTORY</h1>
         </header>
+        <form action="">
+            <div class="line1">
+                <input type="number" name="reference" id="reference" placeholder="Référence">
+                <input type="text" placeholder="Nom du produit"> 
+            </div>
+            <div class="line2">
+                <textarea name="description" id="description" placeholder="Description du produit"></textarea>
+            </div>
+            <div class="line3">
+                <input type="number" name="prix_achat" id="prix_achat" placeholder="Prix d'achat">
+                <input type="number" name="prix_vente" id="prix_vente" placeholder="Prix de vente">
+            </div>
+            <div class="line4">
+                <input type="number" name="stock" id="stock" placeholder="Stock produit">
+                <button type="submit" class="ajouter">Ajouter</button>
+            </div>
+        </form>
 
         <table>
             <thead>
