@@ -96,16 +96,16 @@ $stock = $_GET["stock"] ?? null;
             addButton.addEventListener('click', createProduct)
         
             function createProduct($reference, $nom_article, $description_article, $prix_achat, $prix_vente, $stock) {
-    <?php try {
+                <?php try {
        
-        $sql = "INSERT INTO vapoteuses_eliquides (reference, nom_article, description_article, prix_achat, prix_vente, stock) 
-                VALUES ('$reference', '$nom_article', '$description_article', '$prix_achat', '$prix_vente', '$stock')";
-        $mysqlConnection->exec($sql);
+                $sql = " INSERT INTO vapoteuses_eliquides (reference, nom_article, description_article, prix_achat, prix_vente, stock) 
+                        VALUES ('$reference', '$nom_article', '$description_article', '$prix_achat', '$prix_vente', '$stock')";
+                $mysqlConnection->exec($sql);
+                }
+                catch(PDOException $e) {
+                echo $sql . "<br>" . $e->getMessage();
+                } ?>
     }
-    catch(PDOException $e) {
-        echo $sql . "<br>" . $e->getMessage();
-    } ?>
-}
         </script>
     </body>
 </html>
