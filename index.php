@@ -16,7 +16,8 @@
         $productsStatement->execute();
         $products = $productsStatement->fetchAll();
         $columnHead = $productsStatement-> columnCount();
-        var_dump($columnHead);
+        
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -30,9 +31,14 @@
 
         <table border="1" width="90%;" >
             <thead>
-                <tr> <?php
+                <tr> 
+                    <?php
                 for ($i=0; $i < $columnHead; $i++) { ?>
-                    <th><?php echo $products[$i]; ?></th>
+                    <th>
+                       <?php 
+                         echo $productsStatement->getColumnMeta($i)["name"];
+                        ?> 
+                    </th>
                 <?php } ?>
                 </tr>
                 
