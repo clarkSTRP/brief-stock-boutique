@@ -1,5 +1,14 @@
 <?php 
-    try{
+
+$reference = $_GET["reference"] ?? null;
+$nom_article = $_GET["nom_article"] ?? null;
+$description_article = $_GET["description_article"] ?? null;
+$prix_achat = $_GET["prix_achat"] ?? null;
+$prix_vente = $_GET["prix_vente"] ?? null;
+$stock = $_GET["stock"] ?? null;
+
+
+    try {
         $mysqlConnection = new PDO(
             'mysql:host=localhost;dbname=VapFactory;charset=utf8',
             'admin',
@@ -35,10 +44,10 @@
         <form action="">
             <div class="line1">
                 <input type="number" name="reference" id="reference" placeholder="Référence">
-                <input type="text" placeholder="Nom du produit"> 
+                <input type="text" placeholder="Nom du produit" name="nom_article"> 
             </div>
             <div class="line2">
-                <textarea name="description" id="description" placeholder="Description du produit"></textarea>
+                <textarea name="description_article" id="description_article" placeholder="Description du produit"></textarea>
             </div>
             <div class="line3">
                 <input type="number" name="prix_achat" id="prix_achat" placeholder="Prix d'achat">
@@ -82,7 +91,21 @@
         </table>
 
         <script>
+            let addButton = document.getElementsByClassName('ajouter')[0]
 
+            addButton.addEventListener('click', createProduct)
+        
+            function createProduct($reference, $nom_article, $description_article, $prix_achat, $prix_vente, $stock) {
+    <?php try {
+       
+        $sql = "INSERT INTO vapoteuses_eliquides (reference, nom_article, description_article, prix_achat, prix_vente, stock) 
+                VALUES ('$reference', '$nom_article', '$description_article', '$prix_achat', '$prix_vente', '$stock')";
+        $mysqlConnection->exec($sql);
+    }
+    catch(PDOException $e) {
+        echo $sql . "<br>" . $e->getMessage();
+    } ?>
+}
         </script>
     </body>
 </html>
