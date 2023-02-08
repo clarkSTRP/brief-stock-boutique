@@ -53,12 +53,19 @@
           ?> <tr> <?php 
             for ($i=0; $i <= count($products); $i++) { ?>
                     <td><?php echo $product[$i]; ?></td>
-                <?php } ?>
+                <?php 
+            } ?>
+                <td><button>Modifier</button></td>
+                <td><button>Supprimer</button></td>
                 </tr>
-                <?php
+        <?php
         }
         ?>
             </tbody>
         </table>
+
+        <script>
+
+        </script>
     </body>
 </html>
