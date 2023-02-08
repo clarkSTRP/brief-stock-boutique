@@ -20,4 +20,5 @@
         $rows = $stmt->fetchAll();
 		return $rows;
     }
+
 ?>

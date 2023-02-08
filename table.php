@@ -27,14 +27,24 @@ function afficherTableau($rows, $headers) {
 		<?php
 
 }
+function tableHeader(){
+	$con = getDatabaseConnexion();
+	$requete = 'SELECT * FROM vapoteuses_eliquides WHERE 1=0;';
+	$stmt = $con->query($requete);
+	$rows = $stmt->fetchAll();
+	return $headValue; 
+}
 
 function getHeaderTable() {
-	$headers = array();
+	$headers = array(tableHeader());
 	$headers[] = "id";
 	$headers[] = "reference";
-	$headers[] = "nom_article";
+	$headers[] = "nom";
 	$headers[] = "age";
 	$headers[] = "adresse";
+    $headers[] = "adresse";
+    $headers[] = "adresse";
+
 	return $headers;
 }
 
