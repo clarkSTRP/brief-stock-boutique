@@ -1,0 +1,35 @@
+body, html {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    max-width: 100%;
+}
+
+table * {
+    border: solid 1px ;
+    padding: 5px 5px;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.384);
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    background: url('images/dragon-scales.svg') center;
+
+    header {
+        width: 100%;
+
+        h1 {
+            font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-size: 2rem;
+            text-align: center;
+        }
+    }
+
+    table {
+        border-collapse: collapse;
+    }
+}
