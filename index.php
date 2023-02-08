@@ -15,7 +15,8 @@
         $productsStatement = $mysqlConnection->prepare($sqlQuery);
         $productsStatement->execute();
         $products = $productsStatement->fetchAll();
-                
+        $columnHead = $productsStatement-> columnCount();
+        var_dump($columnHead);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -28,6 +29,14 @@
     <body>
 
         <table border="1" width="90%;" >
+            <thead>
+                <tr> <?php
+                for ($i=0; $i < $columnHead; $i++) { ?>
+                    <th><?php echo $products[$i]; ?></th>
+                <?php } ?>
+                </tr>
+                
+            </thead>
             <tbody>
                 <?php 
         foreach ($products as $product) {
