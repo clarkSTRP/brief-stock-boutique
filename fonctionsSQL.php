@@ -43,7 +43,7 @@ function createProduct($reference, $nom_article, $description_article, $prix_ach
 function updateProduct($id, $reference, $nom_article, $description_article, $prix_achat, $prix_vente, $stock) {
     try {
         $con = getDatabaseConnexion();
-        $requete = "UPDATE vapoteuses_eliquides set 
+        $sql = "UPDATE vapoteuses_eliquides set 
                     reference = '$reference',
                     nom_article = '$nom_article',
                     description_article = '$description_article',
@@ -51,7 +51,7 @@ function updateProduct($id, $reference, $nom_article, $description_article, $pri
                     prix_vente = '$prix_vente',
                     stock = '$stock',
                     where id = '$id' ";
-        $stmt = $con->query($requete);
+        $stmt = $con->query($sql);
     }
     catch(PDOException $e) {
         echo $sql . "<br>" . $e->getMessage();
@@ -61,8 +61,8 @@ function updateProduct($id, $reference, $nom_article, $description_article, $pri
 function deleteProduct($id){
     try {
         $con = getDatabaseConnexion();
-        $requete = "DELETE from vapoteuses_eliquides where id = '$id' ";
-        $stmt = $con->query($requete);
+        $sql = "DELETE from vapoteuses_eliquides where id = '$id' ";
+        $stmt = $con->query($sql);
     }
     catch(PDOException $e) {
         echo $sql . "<br>" . $e->getMessage();
