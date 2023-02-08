@@ -77,7 +77,7 @@ $stock = $_GET["stock"] ?? null;
                 <?php 
         foreach ($products as $product) {
           ?> <tr> <?php 
-            for ($i=0; $i <= count($products); $i++) { ?>
+            for ($i=0; $i < count($products); $i++) { ?>
                     <td><?php echo $product[$i]; ?></td>
                 <?php 
             } ?>
