@@ -37,7 +37,7 @@ $action = $_GET["action"] ?? null;
             }
         } 
 
-        if ($action == "DELETE") {
+        if ($action == "Supprimer") {
             try {
                 $sql = "DELETE from vapoteuses_eliquides where id = '$id' ";
                 $stmt = $mysqlConnection->query($sql);
@@ -47,6 +47,8 @@ $action = $_GET["action"] ?? null;
             }
 
         }
+
+        
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -112,11 +114,14 @@ $action = $_GET["action"] ?? null;
             foreach ($products as $product) {
               ?>
                 <tr>
-                    <?php 
-                for ($i=0; $i < $columnHead; $i++) { ?>
-                    <td><?php echo $product[$i]; ?></td>
-                    <?php 
-                    } ?>
+                    <td><?php echo $product['id']; ?></td>
+                    <td><?php echo $product['reference']; ?></td>
+                    <td><?php echo $product['nom_article']; ?></td>
+                    <td><?php echo $product['description_article']; ?></td>
+                    <td><?php echo $product['prix_achat']; ?></td>
+                    <td><?php echo $product['prix_vente']; ?></td>
+                    <td><?php echo $product['stock']; ?></td>
+
                         <form action="">
                             <td>
                                 <button id="modif">Modifier</button>
@@ -124,7 +129,8 @@ $action = $_GET["action"] ?? null;
                         </form>
                         <form action="">
                         <td>
-                            <input type="submit" name="action" value="DELETE">
+                            <input type="hidden" name="id" value="<?php echo $product['id'] ?>">
+                            <input type="submit" name="action" value="Supprimer">
                             <!-- <button type="submit" >Supprimer</button>     -->
                         </td>
                     </form>
