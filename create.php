@@ -2,12 +2,12 @@
 
 require_once 'database.php';
 
-$reference = $_GET["reference"] ?? null;
-$nom_article = $_GET["nom_article"] ?? null;
-$description_article = $_GET["description_article"] ?? null;
-$prix_achat = $_GET["prix_achat"] ?? null;
-$prix_vente = $_GET["prix_vente"] ?? null;
-$stock = $_GET["stock"] ?? null;
+        $reference = $_GET["reference"] ?? null;
+        $nom_article = $_GET["nom_article"] ?? null;
+        $description_article = $_GET["description_article"] ?? null;
+        $prix_achat = $_GET["prix_achat"] ?? null;
+        $prix_vente = $_GET["prix_vente"] ?? null;
+        $stock = $_GET["stock"] ?? null;
 
 
         
@@ -19,7 +19,10 @@ $stock = $_GET["stock"] ?? null;
             } catch(PDOException $e) {
             echo $sql . "<br>" . $e->getMessage();
             }
-        header('Location: index.php');
-        exit;
+
+
+            header('Location: index.php');
+            exit;
         } 
+
 ?>
