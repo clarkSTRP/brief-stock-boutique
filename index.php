@@ -1,11 +1,12 @@
 <?php 
-
+$id = $_GET["id"] ?? null;
 $reference = $_GET["reference"] ?? null;
 $nom_article = $_GET["nom_article"] ?? null;
 $description_article = $_GET["description_article"] ?? null;
 $prix_achat = $_GET["prix_achat"] ?? null;
 $prix_vente = $_GET["prix_vente"] ?? null;
 $stock = $_GET["stock"] ?? null;
+$action = $_GET["action"] ?? null;
 
 
     try {
@@ -26,7 +27,26 @@ $stock = $_GET["stock"] ?? null;
         $products = $productsStatement->fetchAll();
         $columnHead = $productsStatement-> columnCount();
         
+        if (!empty($reference) && !empty($nom_article) && !empty($description_article) && !empty($prix_achat) && !empty($prix_vente) && !empty($stock)) {  
+            try {
+            $sql = "INSERT INTO vapoteuses_eliquides (reference, nom_article, description_article, prix_achat, prix_vente, stock) 
+                        VALUES ('$reference', '$nom_article', '$description_article', '$prix_achat', '$prix_vente', '$stock')";
+            $mysqlConnection->exec($sql);
+            } catch(PDOException $e) {
+            echo $sql . "<br>" . $e->getMessage();
+            }
+        } 
 
+        if ($action == "DELETE") {
+            try {
+                $sql = "DELETE from vapoteuses_eliquides where id = '$id' ";
+                $stmt = $mysqlConnection->query($sql);
+            }
+            catch(PDOException $e) {
+                echo $sql . "<br>" . $e->getMessage();
+            }
+
+        }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -41,7 +61,9 @@ $stock = $_GET["stock"] ?? null;
         <header>
             <h1>VAP FACTORY</h1>
         </header>
-        <form action="">
+
+<!-- Formulaire pour ajouter un produit dans my sql -->
+        <form action="" >
             <div class="line1">
                 <input type="number" name="reference" id="reference" placeholder="Référence">
                 <input type="text" placeholder="Nom du produit" name="nom_article">
@@ -70,11 +92,10 @@ $stock = $_GET["stock"] ?? null;
             </div>
         </form>
 
-        <form action="" method="get">
 
-            <table>
-                <thead>
-                    <tr>
+        <table>
+            <thead>
+                <tr>
                         <?php
                     for ($i=0; $i < $columnHead; $i++) { ?>
                         <th>
@@ -83,81 +104,38 @@ $stock = $_GET["stock"] ?? null;
                             ?>
                         </th>
                         <?php } ?>
-                    </tr>
-                </thead>
-    
-                <tbody>
+                </tr>
+            </thead>
+
+            <tbody>
                     <?php 
             foreach ($products as $product) {
               ?>
-                    <tr>
-                        <?php 
-                for ($i=0; $i < count($products); $i++) { ?>
-                        <td><?php echo $product[$i]; ?></td>
-                        <?php 
-                } ?>
+                <tr>
+                    <?php 
+                for ($i=0; $i < $columnHead; $i++) { ?>
+                    <td><?php echo $product[$i]; ?></td>
+                    <?php 
+                    } ?>
+                        <form action="">
+                            <td>
+                                <button id="modif">Modifier</button>
+                            </td>
+                        </form>
+                        <form action="">
                         <td>
-                            <button id="modif">Modifier</button>
-                            <button id="supp">Supprimer</button>
+                            <input type="submit" name="action" value="DELETE">
+                            <!-- <button type="submit" >Supprimer</button>     -->
                         </td>
+                    </form>
                     </tr>
-                    <?php
+            <?php
             }
             ?>
                 </tbody>
             </table>
-        </form>
 
         <script>
-            let addButton = document.getElementsByClassName('ajouter')[0]
-
-            addButton.addEventListener('click', createProduct)
-
-            function createProduct(
-                $reference,
-                $nom_article,
-                $description_article,
-                $prix_achat,
-                $prix_vente,
-                $stock
-            ) {
-                <?php try {
-       
-                $sql = " INSERT INTO vapoteuses_eliquides (reference, nom_article, description_article, prix_achat, prix_vente, stock) 
-                        VALUES ('$reference', '$nom_article', '$description_article', '$prix_achat', '$prix_vente', '$stock')";
-                $mysqlConnection->exec($sql);
-                }
-                catch(PDOException $e) {
-                echo $sql . "<br>" . $e->getMessage();
-                } ?>
-            }
-
-            let modifButton = document.getElementById('modif')
-            let trTable = document.querySelectorAll('tr')
-            let tdTable = document.querySelectorAll('td')
-
-            let newp = document.createElement('p')
-
-            modifButton.addEventListener('click', updateProduct)
-
-            function updateProduct($id, $reference, $nom_article, $description_article, $prix_achat, $prix_vente, $stock) {
-        <?php
-        try {
-        $sql = "UPDATE vapoteuses_eliquides set 
-                    reference = '$reference',
-                    nom_article = '$nom_article',
-                    description_article = '$description_article',
-                    prix_achat = '$prix_achat',
-                    prix_vente = '$prix_vente',
-                    stock = '$stock',
-                    where id = '$id' ";
-        $stmt = $mysqlConnection->query($sql);
-    }
-    catch(PDOException $e) {
-        echo $sql . "<br>" . $e->getMessage();
-    }
-    ?>
-}
         </script>
     </body>
 </html>
