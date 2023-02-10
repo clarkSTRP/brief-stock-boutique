@@ -1,10 +1,6 @@
 <?php
 
-$mysqlConnection = new PDO(
-    'mysql:host=localhost;dbname=VapFactory;charset=utf8',
-    'admin',
-    'adminpwd'
-    );
+require_once 'database.php';
 
 $getid = $_GET['id'] ?? null;
 $sql = "SELECT * FROM vapoteuses_eliquides WHERE id = $getid";
@@ -21,7 +17,6 @@ if (isset($_POST['submit'])) {
     $updating = "UPDATE vapoteuses_eliquides SET reference = '$updateReference', nom_article = '$updateNomArticle', description_article = '$updateDescriptionArticle', prix_achat = '$updatePrixAchat', prix_vente = '$updatePrixVente', stock = '$updateStock' WHERE id = $getid;";
     $result = $mysqlConnection->query($updating);
     if ($result) {
-        echo "mis a jour";
         header('Location: index.php');
         exit;
         
