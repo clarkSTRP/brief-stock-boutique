@@ -22,12 +22,12 @@ if (isset($_POST['submit'])) {
     $result = $mysqlConnection->query($updating);
     if ($result) {
         echo "mis a jour";
-        
+        header('Location: index.php');
+        exit;
         
     }
 }
 
-include 'index.php';
 
 ?>
 

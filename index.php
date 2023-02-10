@@ -76,7 +76,7 @@ include 'create.php';
                     <td><?php echo $product['stock']; ?></td>
 
                     <td>
-                    <a href="create.php?id=<?=$product['id']?>" class="btn btn-sm btn-primary"><i class="fa-regular fa-pen-to-square"></i> </a>
+                    <a href="update.php?id=<?=$product['id']?>" name="updateId" class="btn btn-sm btn-primary"><i class="fa-regular fa-pen-to-square"></i> </a>
                     <a href="delete.php?id=<?=$product['id']?>" class="btn btn-sm btn-danger"><i class="fa-solid fa-trash"></i> </a>
                     </td>
 
