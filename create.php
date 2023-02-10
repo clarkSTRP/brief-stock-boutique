@@ -2,6 +2,7 @@
 
 require_once 'database.php';
 
+
         $reference = $_GET["reference"] ?? null;
         $nom_article = $_GET["nom_article"] ?? null;
         $description_article = $_GET["description_article"] ?? null;
@@ -19,7 +20,6 @@ require_once 'database.php';
             } catch(PDOException $e) {
             echo $sql . "<br>" . $e->getMessage();
             }
-
 
             header('Location: index.php');
             exit;
