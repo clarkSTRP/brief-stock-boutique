@@ -26,11 +26,11 @@ include 'create.php';
     </head>
     <body>
         <header>
-            <h1>VAP FACTORY</h1>
+            <img src="images/Logo.png">
         </header>
 
 <!-- Formulaire pour ajouter un produit dans my sql -->
-        <form action="" >
+        <form action="" class="ajout">
             <div class="line1"> 
                 <input type="number" name="reference" id="reference" placeholder="Référence">
                 <input type="text" placeholder="Nom du produit" name="nom_article">
@@ -49,7 +49,7 @@ include 'create.php';
         </form>
 
 
-        <table>
+        <table class="table">
             <thead>
                 <tr>
                         <th>ID</th>
