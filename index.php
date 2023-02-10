@@ -44,7 +44,7 @@ include 'create.php';
             </div>
             <div class="line4">
                 <input type="number" name="stock" id="stock" placeholder="Stock produit">
-                <button type="submit" class="btn btn-primary" ><i class="fa-regular fa-plus"></i></a>Ajouter un produit</button>
+                <button type="submit" class="btn btn-primary" ><i class="fa-regular fa-plus"></i></a> Ajouter un produit</button>
             </div>
         </form>
 
